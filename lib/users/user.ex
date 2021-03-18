@@ -1,4 +1,4 @@
-defmodule Exlivery.Users.User do
+defmodule Flightex.Users.User do
   @keys [:id, :name, :email, :cpf]
   @enforce_keys @keys
 
