@@ -18,7 +18,14 @@ defmodule Flightex.Bookings.CreateBooking do
          cidade_origem: cidade_origem,
          cidade_destino: cidade_destino
        }) do
-    {:ok, booking} = Booking.build(data_completa, cidade_origem, cidade_destino, id)
+    {:ok, booking} =
+      Booking.build(
+        NaiveDateTime.from_iso8601!("#{data_completa} 00:00:00"),
+        cidade_origem,
+        cidade_destino,
+        id
+      )
+
     BookingAgent.save(booking)
 
     {:ok, booking.id}
